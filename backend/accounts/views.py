@@ -5,9 +5,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.contrib.auth.decorators import login_required
+from .serializers import RegisterSerializer
+from django.contrib.auth import authenticate, login, logout, get_user_model
 
-
-from .models import User
+User = get_user_model()
 
 
 def login_view(request):
@@ -41,12 +42,12 @@ def register_view(request):
 
     data = json.loads(request.body)
 
-    if User.objects.filter(username=data["username"]).exists():
-        return JsonResponse({"error": "Usuario ya existe"}, status=400)
+    serializer = RegisterSerializer(data=data)
 
-    user = User.objects.create_user(
-        username=data["username"], email=data.get("email"), password=data["password"]
-    )
+    if not serializer.is_valid():
+        return JsonResponse(serializer.errors, status=400)
+
+    user = serializer.save()
 
     login(request, user)
 
@@ -61,7 +62,6 @@ def register_view(request):
         },
         status=201,
     )
-
 
 def logout_view(request):
     logout(request)
@@ -87,6 +87,7 @@ def me_view(request):
             "email": user.email,
         }
     )
+
 
 @ensure_csrf_cookie
 def csrf_view(request):
