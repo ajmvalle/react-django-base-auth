@@ -15,12 +15,12 @@ export default function Dashboard() {
   }
 
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/auth/login" replace />;
   }
 
   async function handleLogout() {
     await logout();
-    navigate("/login", { replace: true });
+    navigate("/", { replace: true });
   }
 
   return (

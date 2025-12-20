@@ -3,8 +3,11 @@ import { type RouteConfig, index, route } from "@react-router/dev/routes";
 export default [
   index("routes/home.tsx"),
 
-  route("login", "routes/auth/login.tsx"),
-  route("register", "routes/auth/register.tsx"),
+  route("auth", "routes/auth/AuthPageLayout.tsx", [
+    route("login", "routes/auth/login.tsx"),
+    route("register", "routes/auth/register.tsx"),
+  ]),
+
   route("dashboard", "routes/dashboard.tsx"),
 
   route("theme", "layout/AppLayout.tsx", [
@@ -25,7 +28,6 @@ export default [
 
     route("line-chart", "routes/theme/Charts/LineChart.tsx"),
     route("bar-chart", "routes/theme/Charts/BarChart.tsx"),
-    
   ]),
 
   route("theme-auth", "routes/theme/AuthPages/AuthPageLayout.tsx", [
