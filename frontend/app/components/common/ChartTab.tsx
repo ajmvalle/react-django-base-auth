@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ChartTab: React.FC = () => {
+const ChartTab = () => {
   const [selected, setSelected] = useState<
     "optionOne" | "optionTwo" | "optionThree"
   >("optionOne");

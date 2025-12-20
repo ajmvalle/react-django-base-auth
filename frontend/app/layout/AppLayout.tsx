@@ -27,7 +27,7 @@ const LayoutContent = () => {
   );
 };
 
-const AppLayout: React.FC = () => {
+const AppLayout = () => {
   return (
     <SidebarProvider>
       <LayoutContent />
