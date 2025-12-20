@@ -20,7 +20,7 @@ export default function SignInForm() {
   // 🔁 Redirección si ya está autenticado
   useEffect(() => {
     if (!loading && user) {
-      navigate("/dashboard", { replace: true });
+      navigate("/app/dashboard", { replace: true });
     }
   }, [loading, user, navigate]);
 
@@ -38,7 +38,7 @@ export default function SignInForm() {
       return;
     }
 
-    navigate("/dashboard", { replace: true });
+    navigate("/app/dashboard", { replace: true });
   }
 
   // ⏳ Mientras se resuelve la sesión

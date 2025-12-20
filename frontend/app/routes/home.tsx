@@ -74,7 +74,7 @@ export default function Home() {
 
                 {user && (
                   <button
-                    onClick={() => navigate("/dashboard")}
+                    onClick={() => navigate("/app/dashboard")}
                     className="rounded-lg bg-success-500 px-6 py-3 text-white text-sm font-medium shadow-theme-sm hover:bg-success-600 transition"
                   >
                     Ir al Dashboard

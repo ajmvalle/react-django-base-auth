@@ -1,6 +1,8 @@
+import type { Route } from "./+types/dashboard";
 import { Navigate, useNavigate } from "react-router";
 import { useAuth } from "../context/AuthContext";
-import type { Route } from "./+types/dashboard";
+import PageBreadcrumb from "~/components/common/PageBreadCrumb";
+import PageMeta from "~/components/common/PageMeta";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Dashboard" }];
@@ -24,23 +26,31 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
-      <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 space-y-4">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-          Dashboard
-        </h1>
+    <div>
+      <PageMeta
+        title="React.js Blank Dashboard | TailAdmin - Next.js Admin Dashboard Template"
+        description="Este es el panel de control de React.js para TailAdmin - Plantilla de panel de administración de Next.js"
+      />
+      <PageBreadcrumb pageTitle="Dashboard" />
 
-        <p className="text-gray-700 dark:text-gray-300">
-          Bienvenido, <strong>{user.username}</strong>
-        </p>
+      <div className="min-h-screen rounded-2xl border border-gray-200 bg-white px-5 py-7 dark:border-gray-800 dark:bg-white/[0.03] xl:px-10 xl:py-12">
+        <div className="mx-auto w-full max-w-[630px] text-center">
+          <h3 className="mb-4 font-semibold text-gray-800 text-theme-xl dark:text-white/90 sm:text-2xl">
+            Título del Panel de Control
+          </h3>
 
-        <button
-          onClick={handleLogout}
-          className="w-full rounded-md bg-red-600 py-2 text-white font-semibold
+          <p className="text-gray-700 dark:text-gray-300">
+            Bienvenido, <strong>{user.username}</strong>
+          </p>
+
+          <button
+            onClick={handleLogout}
+            className="w-full rounded-md bg-red-600 py-2 text-white font-semibold
                      hover:bg-red-700 transition"
-        >
-          Cerrar sesión
-        </button>
+          >
+            Cerrar sesión
+          </button>
+        </div>
       </div>
     </div>
   );

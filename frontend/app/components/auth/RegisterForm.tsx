@@ -25,7 +25,7 @@ export default function RegisterForm() {
   // 🔁 Si ya está autenticado
   useEffect(() => {
     if (!loading && user) {
-      navigate("/dashboard", { replace: true });
+      navigate("/app/dashboard", { replace: true });
     }
   }, [loading, user, navigate]);
 
@@ -64,7 +64,7 @@ export default function RegisterForm() {
 
       // Backend ya hizo login
       await refreshUser();
-      navigate("/dashboard", { replace: true });
+      navigate("/app/dashboard", { replace: true });
     } catch {
       setErrors(["Error de conexión con el servidor"]);
     } finally {
