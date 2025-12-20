@@ -25,5 +25,13 @@ export default [
 
     route("line-chart", "routes/theme/Charts/LineChart.tsx"),
     route("bar-chart", "routes/theme/Charts/BarChart.tsx"),
+    
   ]),
+
+  route("theme-auth", "routes/theme/AuthPages/AuthPageLayout.tsx", [
+    route("sign-in", "routes/theme/AuthPages/SignIn.tsx"),
+    route("sign-up", "routes/theme/AuthPages/SignUp.tsx"),
+  ]),
+
+  route("*", "routes/theme/OtherPage/NotFound.tsx"),
 ] satisfies RouteConfig;
